@@ -1,0 +1,36 @@
+package com.test.aug27.service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.test.aug27.pojo.Player;
+
+public class TeamSelection {
+	
+	int id;
+	String name;
+	int matchesPlayed;
+	int totRuns;
+	int highestScore;
+	int wktsTaken;
+	int outOnZero;
+	String type;
+	double avgScore;
+	
+	public static List<Player> playerList = new ArrayList<>();
+	public static Scanner sc = new 
+	
+	static int count = 20;
+	
+	public Player getPlayerData() {
+		System.out.println("Enter ID: ");
+		int id = s
+	}
+
+	public static void main(String[] args) {
+		
+		
+
+	}
+
+}

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename local variable &apos;rx&apos; in &apos;com.test.aug27.service.TeamSelection.validateName(...)&apos; to &apos;pl&apos;&#x0A;- Original project: &apos;lib&apos;&#x0A;- Original element: &apos;com.test.aug27.service.TeamSelection.validateName(String).rx&apos;&#x0A;- Renamed element: &apos;rx&apos;&#x0A;- Update references to refactored element" description="Rename local variable &apos;rx&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/src\/main\/java=/gradle_scope=/main=/=/gradle_used_by_scope=/main,test=/&lt;com.test.aug27.service{TeamSelection.java[TeamSelection~validateName~QString;@rx!1524!1546!1531!1532!QPlayer;!0!false" name="pl" references="true" stamp="1661578780905" version="1.0"/>
+</session>

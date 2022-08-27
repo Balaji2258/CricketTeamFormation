@@ -1,0 +1,24 @@
+package com.test.aug27.service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.test.aug27.pojo.Player;
+
+public class TeamSelection {
+	
+	public static List<Player> playerList = new ArrayList<>();
+	
+	static int count = 20;
+	
+	public void getPlayers() {
+		
+	}
+
+	public static void main(String[] args) {
+		
+		
+
+	}
+
+}

@@ -1,0 +1,12 @@
+package com.test.aug27.exceptions;
+
+public class PlayerValidator {
+	public void checkName(String name, String objName) throws InvalidNameException, ValidNameException {
+		if(name.equals(objName)) {
+			throw new InvalidNameException("Player already exists! Enter different player details!");
+		}
+		else {
+			throw new ValidNameException("Valid Player name!");
+		}
+	}
+}

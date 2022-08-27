@@ -1,0 +1,5 @@
+package com.test.aug27.exceptions;
+
+public class PlayerNotFoundException {
+
+}

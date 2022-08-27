@@ -1,0 +1,7 @@
+package com.test.aug27.exceptions;
+
+public class PlayerNotFoundException {
+	public PlayerNotFoundException(String exp) {
+		super(exp);
+	}
+}

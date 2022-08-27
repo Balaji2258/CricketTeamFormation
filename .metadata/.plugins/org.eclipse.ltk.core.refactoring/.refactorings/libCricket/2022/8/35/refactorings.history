@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;com.perfios.test.aug27&apos; to &apos;com.test.aug27.pojo&apos;&#x0A;- Original project: &apos;lib&apos;&#x0A;- Original element: &apos;lib/src/main/java/com.perfios.test.aug27&apos;&#x0A;- Renamed element: &apos;lib/src/main/java/com.test.aug27.pojo&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename package &apos;com.perfios.test.aug27&apos;" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/src\/main\/java=/gradle_scope=/main=/=/gradle_used_by_scope=/main,test=/&lt;com.perfios.test.aug27" name="com.test.aug27.pojo" qualified="false" references="true" stamp="1661576781629" textual="false" version="1.0"/>
+</session>
