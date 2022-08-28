@@ -251,7 +251,6 @@ public class TeamSelection {
 		while(itr.hasNext()) {
 			Player p = itr.next();
 			if(p.getName().equalsIgnoreCase(name)) {
-				System.out.println("Player details: " + p.toString() + "\n");
 				System.out.println("Enter no. of matches played: ");
 				int matchesPlayed = sc.nextInt();
 				p.setMatchesPlayed(matchesPlayed);
@@ -270,8 +269,6 @@ public class TeamSelection {
 				p.setOutOnZero(sc.nextInt());
 				
 				p.setAvgScore(totRuns/matchesPlayed);
-				System.out.println("Updated details: " + p.toString() + "\n");
-				break;
 			}
 		}
 	}

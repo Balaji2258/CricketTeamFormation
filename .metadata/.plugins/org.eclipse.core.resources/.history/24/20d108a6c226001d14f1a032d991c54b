@@ -35,10 +35,4 @@ public class PlayerValidator {
 			throw new EmptyListException("Empty List!");
 		}
 	}
-	
-	public void checkBowlerCount(int bowlerCount) throws InsufficientBowlerException {
-		if(bowlerCount < 3) {
-			throw new InsufficientBowlerException("Minimum number of bowlers required to be entered is 3!");
-		}
-	}
 }

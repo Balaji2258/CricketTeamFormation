@@ -245,13 +245,13 @@ public class TeamSelection {
 				break;
 			} catch(PlayerNotFoundException pe) {
 				System.out.println("Name not found!");
+				break;
 			}
 		}
 		Iterator<Player> itr = playerList.listIterator();
 		while(itr.hasNext()) {
 			Player p = itr.next();
 			if(p.getName().equalsIgnoreCase(name)) {
-				System.out.println("Player details: " + p.toString() + "\n");
 				System.out.println("Enter no. of matches played: ");
 				int matchesPlayed = sc.nextInt();
 				p.setMatchesPlayed(matchesPlayed);
@@ -270,8 +270,6 @@ public class TeamSelection {
 				p.setOutOnZero(sc.nextInt());
 				
 				p.setAvgScore(totRuns/matchesPlayed);
-				System.out.println("Updated details: " + p.toString() + "\n");
-				break;
 			}
 		}
 	}
@@ -351,23 +349,20 @@ public class TeamSelection {
 					break;
 				}
 				case 4: {
-					boolean flagVal = true;
-					while(flagVal) {
+					while(true) {
 						ts.getPlayerList();
 						try {
 							pv.checkBowlerCount(bowlerCount);
-							flagVal = false;
 						} catch (InsufficientBowlerException e) {
+							// TODO: handle exception
 							System.out.println("Minimum number of bowlers required to be entered is 3! You have enterd only " + bowlerCount);
-							continue;
+							break;
 						}
-//						break;
 					}
 					ts.teamFormation();
 					break;
 				}
 				case 5: 
-					System.out.println("You have chosen to exit.. Thank you!!");
 					System.exit(1);
 				default: 
 					System.out.println("Select a valid choice!");
