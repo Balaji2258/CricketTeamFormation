@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
+import com.test.aug27.exceptions.EmptyListException;
 import com.test.aug27.exceptions.InvalidNameException;
 import com.test.aug27.exceptions.PlayerNotFoundException;
 import com.test.aug27.exceptions.PlayerValidator;
@@ -36,12 +37,12 @@ public class TeamSelection {
 //	double avgScore;
 	
 	public static List<Player> playerList, tempList;
-	public static List<Player> team = new ArrayList<>();
+	public static List<Player> team;
 	public static Scanner sc = new Scanner(System.in);
 	public static PlayerValidator pv = new PlayerValidator();
 	public static Random rand = new Random();
 	
-	static int count = 20;
+	static int count = 16;
 	static int bowlerCount = 0;
 	static int wktKeeper = 0;
 	
@@ -115,7 +116,7 @@ public class TeamSelection {
 //		}
 		
 		int  i = 0;
-		while(i < 15) {
+		while(i < count) {
 			id = i+1;
 			
 			while(true) {
@@ -157,9 +158,9 @@ public class TeamSelection {
 			
 			avgScore = totRuns/matchesPlayed;
 			Player pl = new Player(id, name, matchesPlayed, totRuns, highestScore, wktsTaken, outOnZero, type, avgScore);
-			Player pl2 = new Player(id, name, matchesPlayed, totRuns, highestScore, wktsTaken, outOnZero, type, avgScore);
+//			Player pl2 = new Player(id, name, matchesPlayed, totRuns, highestScore, wktsTaken, outOnZero, type, avgScore);
 			playerList.add(pl);
-			tempList.add(pl2);
+			tempList.add(pl);
 			
 			++i;
 		}
@@ -184,7 +185,7 @@ public class TeamSelection {
 		team = new ArrayList<>();
 		int noBowlers;
 		while(true) {
-			System.out.println("Enter number of bowlers: ");
+			System.out.println("Enter number of bowlers required in your team (minimum = 3): ");
 			noBowlers = sc.nextInt();
 			if(noBowlers > bowlerCount) {
 				System.out.println("No. of bowlers exceeds actual bowler count!");
@@ -192,19 +193,36 @@ public class TeamSelection {
 				break;
 			}
 		}
+		Collections.sort(playerList);
 		Collections.sort(tempList);
-		Iterator itr = tempList.listIterator();
+		Iterator<Player> itr = playerList.iterator();
 		int i = 0;
 		while(i < noBowlers && itr.hasNext()) {
-			Player pl = (Player) itr.next();
-			if(pl.getType().equalsIgnoreCase("bowler")) {
+			Player pl = itr.next();
+			if(pl.getType().equals("bowler")) {
 				team.add(pl);
 				tempList.remove(pl);
 			}
+			else {
+				continue;
+			}
+			++i;
 		}
+//		System.out.println("Bowlers: ");
+//		for(Player p : team)
+//			System.out.println(p.toString());
+//		System.out.println();
+//		while(i < noBowlers && itr.hasNext()) {
+//			Player pl = itr.next();
+//			if(pl.getType().equalsIgnoreCase("bowler")) {
+//				team.add(pl);
+//				System.out.println(tempList.remove(pl));
+//			}
+//			++i;
+//		}
 		i = 0;
 		Iterator<Player> itr1 = tempList.listIterator();
-		while(i < 11 && itr1.hasNext()) {
+		while(i < 11 - noBowlers && itr1.hasNext()) {
 			team.add(itr1.next());
 			++i;
 		}
@@ -212,6 +230,12 @@ public class TeamSelection {
 	
 	public void updatePlayer() {
 		String name;
+		try {
+			pv.checkListEmpty(playerList);
+		} catch (EmptyListException e) {
+			System.out.println("Enter the player data first!\nTo do so, select choice 4.\n");
+			return;
+		}
 		while(true) {
 			System.out.println("Enter player name to update: ");
 			name = sc.next();
@@ -250,14 +274,31 @@ public class TeamSelection {
 	}
 	
 	public void displayAll() {
-		for(Player p : playerList) {
-			System.out.println(p.toString());
+		try {
+			pv.checkListEmpty(playerList);
+			Collections.sort(playerList, new NameComparator());
+			System.out.println("ID\tName\tMatches Played\tRuns Scored\tHigh Score\tDucked Out\tWkts Taken\tAvg Score\tType");
+			System.out.println("-----------------------------------------------------------------------------------------------------------------------------");
+			for(Player p : playerList) {
+				System.out.println(p.toString());
+			}
+		}
+		catch (EmptyListException e) {
+			System.out.println("Enter the player data first!\nTo do so, select choice 4.\n");
 		}
 	}
 	
 	public void displayTeam() {
-		for(Player p : team) {
-			System.out.println(p.toString());
+		try {
+			pv.checkListEmpty(team);
+			Collections.sort(team, new NameComparator());
+			System.out.println("ID\tName\tMatches Played\tRuns Scored\tHigh Score\tDucked Out\tWkts Taken\tAvg Score\tType");
+			System.out.println("-----------------------------------------------------------------------------------------------------------------------------");
+			for(Player p : team) {
+				System.out.println(p.toString());
+			}
+		} catch (EmptyListException e) {
+			System.out.println("Enter the player data first!\nTo do so, select choice 4.\n");
 		}
 	}
 
@@ -285,13 +326,15 @@ public class TeamSelection {
 		
 //		boolean boolVal = true;
 		while(true) {
-			System.out.println("Select a choice: \n1. Display all players \n2. Update player information by name");
+			System.out.println("\n1. Display all players \n2. Update player information by name");
 			System.out.println("3. Display final team \n4. Add player information \n5. Exit");
+			System.out.print("Enter your choice: ");
 			int ch = sc.nextInt();
+			System.out.println();
 			
 			switch(ch) {
 				case 1: {
-					Collections.sort(playerList, new NameComparator());
+//					Collections.sort(playerList, new NameComparator());
 					ts.displayAll();
 					break;
 				}
@@ -300,8 +343,7 @@ public class TeamSelection {
 					break;
 				}
 				case 3: { 
-					Collections.sort(team, new NameComparator());
-					ts.teamFormation();
+//					Collections.sort(team, new NameComparator());
 					ts.displayTeam();
 					break;
 				}
@@ -315,6 +357,7 @@ public class TeamSelection {
 						else
 							break;
 					}
+					ts.teamFormation();
 					break;
 				}
 				case 5: 

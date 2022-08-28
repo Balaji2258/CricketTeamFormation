@@ -29,4 +29,10 @@ public class PlayerValidator {
 			throw new PlayerNotFoundException("Player not found!");
 		}
 	}
+	
+	public void checkListEmpty(List<Player> list) throws EmptyListException {
+		if(list == null) {
+			throw new EmptyListException("Empty List!");
+		}
+	}
 }
