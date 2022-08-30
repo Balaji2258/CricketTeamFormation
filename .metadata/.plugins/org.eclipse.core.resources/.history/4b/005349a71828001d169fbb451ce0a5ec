@@ -1,0 +1,101 @@
+package com.test.aug27.service;
+
+import java.util.Scanner;
+
+public class TeamSelection {
+	
+	public static void main(String[] args) {	
+		CricketTeam ts = new CricketTeam();
+		Scanner sc = new Scanner(System.in);
+		
+//		playerList.add(new Player(1, "abc", 6, 420, 85, 2, 0, "batsman", 420/6));
+//		playerList.add(new Player(2, "zef", 10, 850, 92, 3, 2, "batsman", 850/10));
+//		playerList.add(new Player(3, "ghi", 6, 400, 76, 8, 1, "bowler", 400/6));
+//		playerList.add(new Player(4, "jkl", 9, 450, 69, 12, 2, "bowler", 450/9));
+//		playerList.add(new Player(5, "mno", 15, 650, 76, 15, 3, "bowler", 650/15));
+		
+//		playerList.add(new Player(6, "pqr", 6, 420, 85, 2, 0, "batsman", 420/6));
+//		playerList.add(new Player(7, "stu", 6, 420, 85, 2, 0, "batsman", 420/6));
+
+//		while(true) {
+//			ts.getPlayerList();
+//			if(!ts.checkBowlers()) {
+//				System.out.println("No. of bowlers enterd is: " + bowlerCount + ". Minimum required is 3...");
+//				continue;
+//			}
+//			else
+//				break;
+//		}
+		
+		while(true) {
+			System.out.println("\n1. Display all players \n2. Update player information by name");
+			System.out.println("3. Display final team \n4. Add player information \n5. Exit");
+			System.out.print("Enter your choice: ");
+			int ch = sc.nextInt();
+			System.out.println();
+			
+			switch(ch) {
+				case 1: {
+//					Collections.sort(playerList, new NameComparator());
+					ts.displayAll();
+					break;
+				}
+				case 2: {
+					ts.updatePlayer();
+					break;
+				}
+				case 3: { 
+//					Collections.sort(team, new NameComparator());
+					ts.displayTeam();
+					break;
+				}
+				case 4: {
+					boolean flagVal = true;
+					while(flagVal) {
+						ts.getPlayerList();
+						try {
+							pv.checkBowlerCount(bowlerCount);
+							flagVal = false;
+						} catch (InsufficientBowlerException e) {
+							System.out.println("Minimum number of bowlers required to be entered is 3! You have enterd only " + bowlerCount);
+							continue;
+						}
+//						break;
+					}
+					ts.teamFormation();
+					break;
+				}
+				case 5: 
+					System.out.println("You have chosen to exit.. Thank you!!");
+					System.exit(1);
+				default: 
+					System.out.println("Select a valid choice!");
+			}
+		}
+		
+//		//sort by avg score
+//		Collections.sort(playerList);
+//		for(Player p : playerList) {
+//			System.out.println(p.toString());
+//		}
+//		System.out.println();
+//		
+//		//sort by name
+//		Collections.sort(playerList, new NameComparator());
+//		for(Player p : playerList) {
+//			System.out.println(p.toString());
+//		}
+//		
+////		while(true) {
+////			System.out.println("Enter player name to update: ");
+////			boolean up = ts.updatePlayer(sc.next());
+////			if(up) {
+////				break;
+////			}
+////		}
+//		for(Player p : playerList) {
+//			System.out.println(p.toString());
+//		}
+	}
+
+}

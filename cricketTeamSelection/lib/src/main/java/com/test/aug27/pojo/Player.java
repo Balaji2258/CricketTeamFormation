@@ -86,7 +86,8 @@ public class Player implements Comparable<Player> {
 	
 	@Override
 	public String toString() {
-		return id + "\t" + name + "\t" + matchesPlayed + "\t\t" + totRuns + "\t\t" + highestScore + "\t\t" + wktsTaken + "\t\t" + outOnZero + "\t\t" + avgScore + "\t\t" +  type;
+//		return id + "\t" + name + "\t" + matchesPlayed + "\t\t" + totRuns + "\t\t" + highestScore + "\t\t" + wktsTaken + "\t\t" + outOnZero + "\t\t" + avgScore + "\t\t" +  type;
+		return id + "\t" + name + "\t" + matchesPlayed + "\t\t" + totRuns + "\t\t" + highestScore + "\t\t" + wktsTaken + "\t\t" + outOnZero + "\t\t" +  type;
 	}
 	
 	@Override
